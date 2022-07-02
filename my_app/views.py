@@ -7,6 +7,7 @@ from .form import CityForm
 from .models import City
 import requests
 from django.contrib import messages
+from .config import api_key
 # Create your views here.
 
 # def say_hello(request):
@@ -25,8 +26,8 @@ from django.contrib import messages
 #     return render(request,"index1.html",{})
 
 def home(request):
-    url='http://api.openweathermap.org/data/2.5/weather?q={},&appid=db85d7c54bb8888aa63a43ca9cdb5996&units=metric'
-
+    url='http://api.openweathermap.org/data/2.5/weather?q={}&appid='+api_key+'&units=metric'
+    print(url)
     if request.method=='POST':
         form=CityForm(request.POST)
         print(form)
